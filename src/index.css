@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html{
+	font-family: 'Press Start 2P', cursive;
+	background-color: rgb(55, 55, 55);
+	color: white;
+	line-height: 170%;
+	overflow: hidden;
+}
+.container{
+	display: grid;
+	height:98vh;
+	width:96vw;
+	justify-items: center;
+	align-content: start;
+}
+#dialogPanel{
+	margin-top:2em;
+	position: relative;
+	max-width:100%;
+	min-height: 100px;
+	height:20vh;
+}
+.wrapper{
+	padding-bottom: 56.25%; /** 16:9 **/
+	position: relative;
+	box-sizing: border-box;
+	width: 92vw;
+	max-width: 800px;
+}
+img{
+	image-rendering: pixelated;
+}
+
+a{
+	color:lightskyblue;
+	text-decoration: none;
+}
+
+.nav{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+}
+.nav button{
+	padding: 1em;
+	font-family: inherit;
+	border-radius: .5em;
+	background: rgb(70, 70, 70);
+}
+.nav .nav-group{
+	display:flex;
+	align-items: center;
+	gap: .5em;
+}
+.caption{
+	font-size: 70%;
+	opacity: .7;
+}
