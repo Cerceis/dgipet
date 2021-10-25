@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../src/index.css">
+	<title>About</title>
+	<style>
+		html{
+			overflow: scroll;
+		}
+		body{
+			padding: 1em;
+			display:grid;
+			justify-content: center;
+		}
+		p{
+			padding-left:1em;
+		}
+	</style>
+</head>
+<body>
+	<div style="display: flex; justify-content:space-between;">
+		<h1>Info</h1>
+		<div class="caption">2021-10-20</div>
+	</div>
+	<div><hr></div>
+	<div style="max-width:1000px;">
+		<section>
+			<h2>About Me</h2>
+			<p>
+				This game has been developed by me only for fun. I like retro 8-bit games, and back when I was like 7 years old, I can't afford to get the very popular 
+				v-pet device known as the "Digivice" from "Digimon". Actually (Obviously) this game is entirely based on Digimon just to fufill my childhood dream of
+				owning a Digivice.
+			</p>
+			<p>
+				This project is also all about to practice my programming skills in games related area (sound, animation, etc..).
+				This project is also built entirely with JavaScript(TypeScript) with no framework.
+				
+				
+			</p>
+			<p>Why?</p>
+			<p>
+				I am a full-time full-stack dev working in office everyday with frameworks like Vue, Angular, Nestjs, etc... .I
+				just felt kinda overwhelmed by all the frameworks I am working with everyday, so I decided to go back to basic and start from
+				literally <span style="color:red;">scratch</span>. <span style="color:red;">No frameworks</span>, minimum libraries, just TypeScript to keep my code organized.
+				I will make a list of libraries used over <a href="#listOfLibraries">here</a>. Oh yea, no canvas has been used in this game!
+			</>
+			<p>
+				Also after more than 10 years of gaming experience, I actually felt like I have played everything game and
+				no games interests me anymore. So after working hours, usually my game time is now empty and I felt like I could start a fun little
+				project!
+			</p>
+		</section>
+		<section>
+			<h2>About the game</h2>
+			<p>
+				While this game is all about the nostalgic 8-bit art style. Developing on a modern platform infuse the game with a little modern twist.
+			</p> 
+		</section>
+		<hr>
+		<section>
+			<h2>Interesting stuffs happened while developing</h2>
+			<p>- Structuring the flow</p>
+			<p>
+				Hardcoding stuff is generally bad in any type of programming.
+			</p>
+			<p>- Realizing how convenient frameworks are</p>
+			<p>
+				After using frameworks like Vuejs, Angular, etc almost everyday. You will soon realize how convenient frameworks are after you start another
+				project from scratch. Things like: 
+				<ul>
+					<li>2-way binding</li>
+					<li>Watcher</li>
+					<li>Computed</li>
+					<li>Observable</li>
+					<li>Webpack</li>
+					<li>etc</li>
+				</ul>
+			</p>
+			<p>
+				really makes life easier. While developing this project, mojority of the time I have been thinking "Ah just bind x data with y data" and then
+				realizing I am not using any frameworks at all ;( ... In the end I will end up implementing most of these myself which I learnt a lot from it!
+			</p>
+			<p>- Developing a Promise listener</p>
+			<p>
+				This happens when I am developing the dialog section of the game. There's literally arrays of dialogs feed into the Dialog class and will
+				tranverse everything until it reaches the last dialog. Problem is, the Scene controller need to pause the logic and waiting until user has read
+				through all the dialogs. This is where await/async Promise comes into play. Everytime the user starts reading dialogs, there's internal interval
+				set into Dialog class to check for the completed flag. I could just call the method <code>await dialog.untilEnd()</code> and it will pause until
+				user has went through everything. 
+			</p>
+		</section>
+		<hr>
+		<section id="listOfLibraries">
+			<h2>Libraries/Tools used</h2>
+			<p>
+				<p>Libraries/Tools/Services</p>
+				<ul>
+					<li>TypeScript</li>
+					<li>
+						<a href="https://ezgif.com/" target="_blank">EZGIF.COM</a>
+					</li>
+					<li>Google Fonts</li>
+				</ul>
+				<p>Softwares</p>
+				<ul>
+					<li>VSCode</li>
+					<li>Procreate</li>
+				</ul>
+				<p>Hardwares</p>
+				<ul>
+					<li>Macbook Pro 13inch 2019</li>
+					<li>IPad Pro 11inch 2019</li>
+				</ul>
+			</p> 
+		</section>
+		<hr>
+		<section id="listOfResources">
+			<h2>Resources</h2>
+			<p>
+				<ul>
+					<li>
+						<a href="https://withthewill.net/threads/full-color-digimon-dot-sprites.25843/" target="_blank">Sprites</a> by Tortoiseshel &lt3
+					</li>
+				</ul>
+			</p> 
+		</section>
+		<hr>
+		<section>
+			<h2>FAQ</h2>
+			<p>- Is it open source?</p>
+			<p>
+				Read the <a href="#license">license</a> section.
+			</p>
+			<p>- Why TypeScript?</p> 
+			<p>
+				Because as the game logic gets bigger and mesier, it's gonna get harder to maintain the code. Actually, I hated TypeScript as 
+				I liked the freedom vanilla JavaScript provide. But I have grown to appreciate TypeScript in general, just need to get used to it!
+			</p>
+			<p>- Why no canvas?</p>
+			<p>I just don't like canvas LOL.</p>
+		</section>
+		<hr>
+		<section id="license">
+			<h2>License</h2>
+			<p>While the source is publicly available, one should not distribute it commercially.</p>
+		</section>
+	</div>
+</body>
+</html>
