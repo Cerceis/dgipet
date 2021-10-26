@@ -5,7 +5,11 @@ export class ControlInput{
 	constructor(label: string, min?: number, max?: number){
 		this._label = label
 		this.ele = document.createElement("div");
-		this.ele.innerText = this._label;
+		this.ele.style.display = "grid";
+		this.ele.style.margin = ".5em 0";
+		const text = document.createElement("span")
+		text.textContent = this._label
+		this.ele.appendChild(text);
 		this.ele_input = document.createElement("input");
 		this.ele_input.setAttribute("placeholder","your name...")
 		min ?? this.ele_input.setAttribute("minlength", min.toString());

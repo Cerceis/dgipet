@@ -34,6 +34,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 import { GetRandom } from "../../lib/GetRandom.js";
 import { Dialog } from "../../Classes/Dialog.js";
 import { ControlInput } from "../../VisualControls/Input.js";
@@ -43,9 +52,9 @@ import dlg from "./UserCreationSceneDialogs.js";
 import { ControlButton } from "../../VisualControls/Button.js";
 import { Sound } from "../../Classes/Sound.js";
 import { Animator } from "../../Classes/Animator.js";
+import { User } from "../../Classes/User.js";
 var listOfPossibleStarters = [
-    "Nyaromon", "Gulimon",
-    "Popomon", "Jyarimon"
+    "Nyaromon", "Popomon", "Jyarimon"
 ];
 var numbersOfCandidate = 2;
 var UserCreationScene = /** @class */ (function () {
@@ -56,7 +65,7 @@ var UserCreationScene = /** @class */ (function () {
         this._imports = {};
         this.userName = "";
         //Logics
-        this.candidates = GetRandom(listOfPossibleStarters, numbersOfCandidate, true);
+        this.candidates = GetRandom(__spreadArray([], listOfPossibleStarters, true), numbersOfCandidate, true);
         this.initImports();
         this._startScene();
     }
@@ -134,10 +143,11 @@ var UserCreationScene = /** @class */ (function () {
                         });
                         userNameBtn.bindFunc(function () {
                             _this.userName = userNameInput.value;
+                            User.name = _this.userName;
+                            console.log(User);
                             Controller.delete();
                             resolve();
                         });
-                        Controller.setColCount(2);
                         Controller.add([userNameInput.ele, userNameBtn.ele]);
                         return [2 /*return*/];
                 }
@@ -147,7 +157,7 @@ var UserCreationScene = /** @class */ (function () {
     UserCreationScene.prototype._part2 = function () {
         var _this = this;
         return new Promise(function (resolve) { return __awaiter(_this, void 0, void 0, function () {
-            var candidateBtn1, candidateBtn2;
+            var candidateBtns, _loop_1, this_1, i;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -165,6 +175,8 @@ var UserCreationScene = /** @class */ (function () {
                                     _this.animator.addResources([
                                         _this.candidatesClass[0].animation, _this.candidatesClass[1].animation
                                     ]);
+                                    _this.candidatesClass[0].ele.style.filter = "brightness(30%)";
+                                    _this.candidatesClass[1].ele.style.filter = "brightness(30%)";
                                     Screen.draw(_this.candidatesClass[0].ele, 25, 50);
                                     Screen.draw(_this.candidatesClass[1].ele, 75, 50);
                                     _this.animator.start();
@@ -175,10 +187,26 @@ var UserCreationScene = /** @class */ (function () {
                         return [4 /*yield*/, Dialog.untilEnd()];
                     case 1:
                         _a.sent();
-                        candidateBtn1 = new ControlButton(this.candidatesClass[0].name);
-                        candidateBtn2 = new ControlButton(this.candidatesClass[1].name);
-                        Controller.setColCount(2);
-                        Controller.add([candidateBtn1.ele, candidateBtn2.ele]);
+                        candidateBtns = [];
+                        _loop_1 = function (i) {
+                            candidateBtns.push(new ControlButton(this_1.candidatesClass[i].name));
+                            candidateBtns[i].ele.addEventListener("mouseover", function () {
+                                _this.candidatesClass[i].ele.style.filter = "brightness(100%)";
+                                _this.candidatesClass[i].make("happy");
+                            });
+                            candidateBtns[i].ele.addEventListener("mouseleave", function () {
+                                _this.candidatesClass[i].ele.style.filter = "brightness(30%)";
+                                _this.candidatesClass[i].make("idle");
+                            });
+                            candidateBtns[i].bindFunc(function () {
+                                console.log("You selected " + _this.candidatesClass[i].name);
+                            });
+                            Controller.add([candidateBtns[i].ele]);
+                        };
+                        this_1 = this;
+                        for (i = 0; i < this.candidatesClass.length; i++) {
+                            _loop_1(i);
+                        }
                         return [2 /*return*/];
                 }
             });

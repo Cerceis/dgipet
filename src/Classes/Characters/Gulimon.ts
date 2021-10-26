@@ -5,11 +5,6 @@ import { Emote, EmoteType } from '../../Types/Emote.js';
 export class Gulimon extends Basic{
 	
 	public name: string = "Gulimon";
-	public nickName: string = "";
-	public emotes: Emote = {
-		"idle": ["000", "001"],
-		"angry": ["008", "011"]
-	}
 	public animation: Animation;
 	public ele: HTMLImageElement;
 	

@@ -19,6 +19,7 @@ var KeyboardController = /** @class */ (function () {
                     e.preventDefault();
                     break;
                 case " ":
+                    e.preventDefault();
                     Dialog.next();
                     break;
             }

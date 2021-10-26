@@ -24,6 +24,6 @@ export class StartScreenScene{
 			[startGameBtn.ele, loadGameBtn.ele],
 			"width: 30%; height: 20%;"
 		);
-		Screen.draw(menuContainer.ele, 50, 50, ["menuCon"]);
+		Screen.draw(menuContainer.ele, 50, 40, ["menuCon"]);
 	}
 }

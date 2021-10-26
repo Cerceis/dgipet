@@ -21,6 +21,7 @@ export class KeyboardController{
 					e.preventDefault()
 					break;
 				case " ":
+					e.preventDefault();
 					Dialog.next();
 					break
 			}

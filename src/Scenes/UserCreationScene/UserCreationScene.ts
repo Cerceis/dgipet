@@ -7,10 +7,10 @@ import dlg from "./UserCreationSceneDialogs.js"
 import { ControlButton } from "../../VisualControls/Button.js";
 import { Sound } from "../../Classes/Sound.js";
 import { Animator } from "../../Classes/Animator.js";
+import { User } from "../../Classes/User.js";
 
 const listOfPossibleStarters: string[] = [
-	"Nyaromon", "Gulimon",
-	"Popomon", "Jyarimon"
+	"Nyaromon", "Popomon", "Jyarimon"
 ]
 
 const numbersOfCandidate: number = 2;
@@ -25,7 +25,7 @@ export class UserCreationScene{
 
 	constructor(){
 		//Logics
-		this.candidates = GetRandom(listOfPossibleStarters, numbersOfCandidate, true);
+		this.candidates = GetRandom([...listOfPossibleStarters], numbersOfCandidate, true);
 		this.initImports()
 		this._startScene()
 	}
@@ -64,10 +64,11 @@ export class UserCreationScene{
 			})
 			userNameBtn.bindFunc(()=>{
 				this.userName = userNameInput.value;
+				User.name = this.userName
+				console.log(User)
 				Controller.delete()
 				resolve()
 			})
-			Controller.setColCount(2);
 			Controller.add([userNameInput.ele, userNameBtn.ele])
 		})
 	}
@@ -87,6 +88,8 @@ export class UserCreationScene{
 						this.animator.addResources([
 							this.candidatesClass[0].animation, this.candidatesClass[1].animation
 						])	
+						this.candidatesClass[0].ele.style.filter = "brightness(30%)"
+						this.candidatesClass[1].ele.style.filter = "brightness(30%)"
 						Screen.draw(this.candidatesClass[0].ele, 25, 50);
 						Screen.draw(this.candidatesClass[1].ele, 75, 50);
 						this.animator.start();
@@ -95,10 +98,23 @@ export class UserCreationScene{
 			])
 			Dialog.setDialog(dlg.D002)
 			await Dialog.untilEnd()
-			const candidateBtn1 = new ControlButton(this.candidatesClass[0].name);
-			const candidateBtn2 = new ControlButton(this.candidatesClass[1].name);
-			Controller.setColCount(2);
-			Controller.add([candidateBtn1.ele, candidateBtn2.ele]);
+			let candidateBtns = []
+			for(let i = 0; i<this.candidatesClass.length; i++){
+				candidateBtns.push(new ControlButton(this.candidatesClass[i].name))
+				candidateBtns[i].ele.addEventListener("mouseover", ()=>{
+					this.candidatesClass[i].ele.style.filter = "brightness(100%)";
+					this.candidatesClass[i].make("happy")
+				}) 
+				candidateBtns[i].ele.addEventListener("mouseleave", ()=>{
+					this.candidatesClass[i].ele.style.filter = "brightness(30%)";
+					this.candidatesClass[i].make("idle")
+				}) 
+				candidateBtns[i].bindFunc(()=> {
+					console.log(`You selected ${this.candidatesClass[i].name}`)
+				}) 
+				Controller.add([candidateBtns[i].ele]);
+			}
+			
 		})
 	}
 

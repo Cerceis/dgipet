@@ -21,11 +21,6 @@ var Nyaromon = /** @class */ (function (_super) {
         if (size === void 0) { size = 25; }
         var _this = _super.call(this) || this;
         _this.name = "Nyaromon";
-        _this.nickName = "";
-        _this.emotes = {
-            "idle": ["000", "001"],
-            "angry": ["006", "008"]
-        };
         _this.animation = new Animation(size, _this.name, _this.emotes.idle);
         _this.ele = _this.animation.ele;
         return _this;
