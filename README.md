@@ -3,6 +3,9 @@ A fun 8-bit nostalgic side-project inspired by "tamagochi" game.
 
 https://pet.cerceis.net v.0.0a
 
+# Info
+For more info visit https://pet/cerceis.net/views/info.html
+
 # Version
 
 +[2020-10-25]: v0.1a 
