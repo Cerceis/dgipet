@@ -1,11 +1,10 @@
-import { KeyboardController } from "./Classes/KeyboardController.js";
+import { KeyboardController } from "./Classes/GameEngine/KeyboardController.js";
 import { StartScreenScene } from "./Scenes/StartScreenScene/StartScreenScene.js";
-import { Screen } from "./Classes/Screen.js";
-import { Controller } from "./Classes/Controller.js";
-import { Dialog } from "./Classes/Dialog.js";
+import { Screen } from "./Classes/GameEngine/Screen.js";
+import { Controller } from "./Classes/GameEngine/Controller.js";
+import { Dialog } from "./Classes/GameEngine/Dialog.js";
 
-var gameTick = 300; //Miliseconds
-var GameInitiator = function () {
+let GameInitiator = function () {
     new KeyboardController();
     Screen.bind(document.getElementById("gameScreenWrapper"));
     Controller.bind(document.getElementById("controlPanel"));
@@ -14,3 +13,4 @@ var GameInitiator = function () {
     new StartScreenScene();
 };
 GameInitiator();
+

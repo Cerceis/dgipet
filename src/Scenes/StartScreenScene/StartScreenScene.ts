@@ -1,8 +1,10 @@
-import { ControlButton } from "../../VisualControls/Button.js"
-import { Screen } from "../../Classes/Screen.js";
+import { ControlButton } from "../../Classes/VisualControls/Button.js"
+import { Screen } from "../../Classes/GameEngine/Screen.js";
 import { UserCreationScene } from "../UserCreationScene/UserCreationScene.js"
-import { ControlContainer } from "../../VisualControls/Container.js";
-import { Controller } from "../../Classes/Controller.js"
+import { ControlContainer } from "../../Classes/VisualControls/Container.js";
+import { LoadGame } from "../../Classes/GameEngine/Load.js";
+import { HomeScene } from "../HomeScene/HomeScene.js";
+import { Sound } from "../../Classes/GameEngine/Sound.js";
 
 export class StartScreenScene{
 	constructor(){
@@ -12,13 +14,14 @@ export class StartScreenScene{
 		const startGameBtn = new ControlButton("Start", "width:100%;");
 		const loadGameBtn = new ControlButton("Load", "width:100%;");
 		startGameBtn.bindFunc(()=>{
-			console.log("Starting game")
 			Screen.delete()
 			new UserCreationScene()
 		})
-		loadGameBtn.bindFunc(()=>{
-			console.log("Loading game...")
-			console.log("Function not implemented...")
+		loadGameBtn.bindFunc(async()=>{
+			await LoadGame()
+			Screen.delete()
+			new Sound("achievement.wav")
+			new HomeScene()
 		})
 		const menuContainer = new ControlContainer(
 			[startGameBtn.ele, loadGameBtn.ele],

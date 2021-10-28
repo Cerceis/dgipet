@@ -1,16 +1,15 @@
 import { Basic } from './Basic.js';
-import { Animation } from '../Animation.js';
+import { Animation } from '../GameEngine/Animation.js';
 import { Emote, EmoteType } from '../../Types/Emote.js';
 
 export class Gulimon extends Basic{
 	
 	public name: string = "Gulimon";
 	public animation: Animation;
-	public ele: HTMLImageElement;
 	
 	constructor(size: number = 25){
 		super();
-		this.animation = new Animation(size, this.name, this.emotes.idle);
+		this.animation = new Animation(size, this.name, this.emotes.idle, this.id);
 		this.ele = this.animation.ele;
 	}
 
