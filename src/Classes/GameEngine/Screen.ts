@@ -30,10 +30,11 @@ interface Pipeline {
 
 /****************************************Types and Interfaces***************************************/
 
-class ScreenClass{
+export class ScreenClass{
 
 	public ele: HTMLDivElement = document.createElement('div');
 	public listOfChildElement: ChildElement[] = [];
+	public parent: HTMLElement;
 
 	constructor(){
 		const eleStyle = `
@@ -42,19 +43,24 @@ class ScreenClass{
 			position:absolute;
 			border: 1px dashed #747474;
 			border-radius: .5em;
+			overflow: hidden;
 		`;
 		this.ele.setAttribute("style", eleStyle)
 	}	
 
 	public bind(parent: HTMLElement): void{
-		parent.appendChild(this.ele);
+		this.parent = parent;
+		this.parent.appendChild(this.ele);
 	}
 
-	public draw(child: HTMLElement, x: number, y: number, tags: string[] = []): void{
+	public draw(child: HTMLElement, x: number, y: number, tags: string[] = [], noTranslate: boolean = false): void{
 		//x, y as percentage
 		const childId = GenerateObjectId();
 		child.setAttribute("id", childId);
-		gsap.set(child, {position: "absolute", x:`${-x}%`, y:`${-y}%`, left:`${x}%`, top:`${y}%`})
+		if(noTranslate)
+			gsap.set(child, {position: "absolute", left:`${x}%`, top:`${y}%`})
+		else
+			gsap.set(child, {position: "absolute", x:`${-x}%`, y:`${-y}%`, left:`${x}%`, top:`${y}%`})
 		this.listOfChildElement.push({
 			id: childId,
 			tags: tags,
@@ -78,6 +84,10 @@ class ScreenClass{
 				})	
 			}
 		}
+	}
+
+	public destory(): void{ 
+		this.parent.removeChild(this.ele)
 	}
 
 	public delay(ms: number): Promise<void>{

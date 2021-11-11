@@ -23,7 +23,7 @@ export const V003 = {
 		"Is there anything else you want to know?"
 	],
 	"V003d1":[
-		"Alright, here, take some supply, you will need it. (It's gonna expire soon anyway ;D)",
+		"[@addItems Alright, here, take some supply, you will need it. (It's gonna expire soon anyway ;D)",
 		"These are not for you! It's for [#partnerName ! Remember to feed him!",
 	]
 }

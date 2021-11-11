@@ -1,6 +1,6 @@
 import { GenerateObjectId } from "../../lib/GenerateObjectId.js";
-var Animation = /** @class */ (function () {
-    function Animation(size, // Sprite size (Should be in % for responsiveness)
+export class Animation {
+    constructor(size, // Sprite size (Should be in % for responsiveness)
     spriteName, //Folder name of the sprite
     spriteSequence, // 000, 001, 002 ...
     id //Id to prevent duplicates, otherwise will just auto generates one.
@@ -10,6 +10,7 @@ var Animation = /** @class */ (function () {
         this._spriteName = "";
         this._sequence = [];
         this._currentFrame = 0;
+        this._baseDir = "../../assets/sprites/";
         if (!id)
             this.id = GenerateObjectId();
         else
@@ -17,20 +18,18 @@ var Animation = /** @class */ (function () {
         this._size = size;
         this._spriteName = spriteName;
         this._sequence = spriteSequence;
-        this.ele.setAttribute("width", this._size + "%");
+        this.ele.setAttribute("width", `${this._size}%`);
         this.init();
     }
-    Animation.prototype.init = function () {
-        this.ele.src = "../../assets/sprites/" + this._spriteName + "/" + this._sequence[this._currentFrame] + ".png";
-    };
-    Animation.prototype.next = function () {
+    init() {
+        this.ele.src = `${this._baseDir}${this._spriteName}/${this._sequence[this._currentFrame]}.png`;
+    }
+    next() {
         this._currentFrame + 1 <= this._sequence.length - 1 ? this._currentFrame++ : this._currentFrame = 0;
-        this.ele.src = "../../assets/sprites/" + this._spriteName + "/" + this._sequence[this._currentFrame] + ".png";
-    };
-    Animation.prototype.setSprite = function (sprites) {
+        this.ele.src = `${this._baseDir}${this._spriteName}/${this._sequence[this._currentFrame]}.png`;
+    }
+    setSprite(sprites) {
         this._currentFrame = 0;
         this._sequence = sprites;
-    };
-    return Animation;
-}());
-export { Animation };
+    }
+}

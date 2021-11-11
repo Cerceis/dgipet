@@ -1,35 +1,34 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 import { Basic } from './Basic.js';
 import { Animation } from '../GameEngine/Animation.js';
-var Nyaromon = /** @class */ (function (_super) {
-    __extends(Nyaromon, _super);
-    function Nyaromon(size) {
-        if (size === void 0) { size = 25; }
-        var _this = _super.call(this) || this;
-        _this.name = "Nyaromon";
-        _this.animation = new Animation(size, _this.name, _this.emotes.idle, _this.id);
-        _this.ele = _this.animation.ele;
-        return _this;
+export class Nyaromon extends Basic {
+    constructor(size = 25) {
+        super();
+        this.name = "Nyaromon";
+        this.tier = 0;
+        this.nickName = this.name;
+        //Init animations
+        this.animation = new Animation(size, this.name, this.emotes.idle, this.id);
+        this.ele = this.animation.ele;
+        //Stats
+        this.attr_str += 1;
+        this.attr_int += 0;
+        this.attr_dex += 1;
+        this.attr_vit += 2;
+        this.attr_con += 2;
+        //Base Stats increament per level // default: 1 per level
+        this.str_per_level += 0;
+        this.int_per_level += 0;
+        this.dex_per_level += 0;
+        this.vit_per_level += 0;
+        this.con_per_level += 0;
+        this.calculateLevel();
+        this.calculateAttribute();
+        this.attr_health = this.attr_health_max;
+        this.attr_mana = this.attr_mana_max;
+        this.skills = [
+            "Tackle",
+            "Rage", "PoisonFang"
+        ];
+        this.initSkills();
     }
-    Nyaromon.prototype.make = function (emote) {
-        if (this.emotes && this.emotes[emote]) {
-            this.animation.setSprite(this.emotes[emote]);
-        }
-    };
-    return Nyaromon;
-}(Basic));
-export { Nyaromon };
+}

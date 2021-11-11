@@ -9,7 +9,7 @@ export default {
 		"You are now in the DGI world!",
 		"It's not D-G-I world!",
 		"It's pronounced D-G world!",
-		"Please tell me Your name!",
+		"Please tell me your name!",
 	],
 	"D002":[
 		"So your name is [#playerName ?!",

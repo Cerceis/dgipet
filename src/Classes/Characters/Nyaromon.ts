@@ -1,22 +1,37 @@
 import { Basic } from './Basic.js';
 import { Animation } from '../GameEngine/Animation.js';
-import { Emote, EmoteType } from '../../Types/Emote.js';
 
 export class Nyaromon extends Basic{
 	
 	public name: string = "Nyaromon";
-	public animation: Animation;
+	public tier: number = 0;
 	
 	constructor(size: number = 25){
 		super();
+		this.nickName = this.name
+		//Init animations
 		this.animation = new Animation(size, this.name, this.emotes.idle, this.id);
 		this.ele = this.animation.ele;
-	}
-
-	public make(emote: EmoteType):void {
-		if(this.emotes && this.emotes[emote]){
-			this.animation.setSprite(this.emotes[emote])
-		}
-	}
- 	
+		//Stats
+		this.attr_str += 1;
+		this.attr_int += 0;
+		this.attr_dex += 1;
+		this.attr_vit += 2;
+		this.attr_con += 2;
+		//Base Stats increament per level // default: 1 per level
+		this.str_per_level += 0;
+		this.int_per_level += 0;
+		this.dex_per_level += 0;
+		this.vit_per_level += 0;
+		this.con_per_level += 0;
+		this.calculateLevel();
+		this.calculateAttribute();
+		this.attr_health = this.attr_health_max;
+		this.attr_mana = this.attr_mana_max;
+		this.skills = [
+			"Tackle",
+			"Rage", "PoisonFang"
+		]
+		this.initSkills();
+	} 	
 }

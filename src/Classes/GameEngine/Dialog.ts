@@ -115,7 +115,7 @@ export class Dialog{
 		this.rendering = false;
 		this.renderEventList = {};
 		if(this.autoPlay) {
-			await this.delay(3000)
+			await this.delay(2000)
 			_dialog.next();
 		}
 	}

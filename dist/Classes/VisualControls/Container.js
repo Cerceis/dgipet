@@ -1,20 +1,14 @@
-var ControlContainer = /** @class */ (function () {
-    function ControlContainer(childs, style) {
-        var _this = this;
-        if (childs === void 0) { childs = []; }
-        if (style === void 0) { style = ""; }
+export class ControlContainer {
+    constructor(childs = [], style = "") {
         this.ele = document.createElement("div");
         this.ele.setAttribute("style", "display:grid;" + style);
-        childs.forEach(function (child) {
-            _this.ele.appendChild(child);
+        childs.forEach(child => {
+            this.ele.appendChild(child);
         });
     }
-    ControlContainer.prototype.add = function (childs) {
-        var _this = this;
-        childs.forEach(function (child) {
-            _this.ele.appendChild(child);
+    add(childs) {
+        childs.forEach(child => {
+            this.ele.appendChild(child);
         });
-    };
-    return ControlContainer;
-}());
-export { ControlContainer };
+    }
+}

@@ -1,9 +1,0 @@
-.i-save{ position: relative; }
-.i-save:after{
-    content: '';
-    display: block;
-    height: 32px;
-    width: 32px;
-    position: absolute;
-    background: url("../images/icons/i-save.svg") no-repeat 0 0;
-}

@@ -1,11 +1,11 @@
-var isNumber = function (x) { return Object.prototype.toString.call(x) === "[object Number]"; };
-var iaaest = function (arr) { return new Set(arr.map(function (x) { return Object.prototype.toString.call(x); })).size <= 1; };
-var saae = function (arr, symbol) {
-    return arr.reduce(function (f, l) { return iaaest(arr) && isNumber(f) ? f + l : symbol ? f + symbol + l : f + " " + l; });
+const isNumber = x => Object.prototype.toString.call(x) === "[object Number]";
+const iaaest = (arr) => new Set(arr.map(x => Object.prototype.toString.call(x))).size <= 1;
+const saae = (arr, symbol) => {
+    return arr.reduce((f, l) => iaaest(arr) && isNumber(f) ? f + l : symbol ? f + symbol + l : f + " " + l);
 };
-var ssp = function (is) {
-    var r = "";
-    for (var i = 0; i < is.length; i++) {
+const ssp = (is) => {
+    let r = "";
+    for (let i = 0; i < is.length; i++) {
         if (i % 2 === 1)
             r += is[i] + is[i - 1];
         if (i % 2 === 0 && i === is.length - 1)
@@ -13,11 +13,11 @@ var ssp = function (is) {
     }
     return r;
 };
-export var GCK = function (is) {
-    var sbsl = function (a, b) { return a.length > b.length ? "s" + b + a : a + b; };
-    var reformat2asc = function (t) {
-        var r = "";
-        for (var i = 0; i < t.length; i++) {
+export const GCK = (is) => {
+    const sbsl = (a, b) => a.length > b.length ? "s" + b + a : a + b;
+    const reformat2asc = (t) => {
+        let r = "";
+        for (let i = 0; i < t.length; i++) {
             if (i % 2 === 1) {
                 r += sbsl(String(t.charCodeAt(i - 1)), String(t.charCodeAt(i)));
                 if (i !== t.length - 1 && i !== 0)
@@ -28,16 +28,16 @@ export var GCK = function (is) {
         }
         return r;
     };
-    var binc = function (ipt) {
-        var r = [];
-        ipt.split("-").forEach(function (e, i) { return e[0] !== "e" && e[0] !== "s" ? r.push(String(Number(e) + (i + i * 2))) : r.push(e); });
+    const binc = (ipt) => {
+        let r = [];
+        ipt.split("-").forEach((e, i) => e[0] !== "e" && e[0] !== "s" ? r.push(String(Number(e) + (i + i * 2))) : r.push(e));
         return r;
     };
     return saae(binc(reformat2asc(ssp(is))), "-");
 };
-export var RCK = function (is) {
-    var r = "";
-    var cs = function (t) {
+export const RCK = (is) => {
+    let r = "";
+    const cs = (t) => {
         if (t.length === 2)
             return [t.slice(0, 1), t.substring(1)];
         if (t.length === 3)
@@ -49,16 +49,16 @@ export var RCK = function (is) {
         if (t.length === 6)
             return [t.slice(0, 3), t.substring(3)];
     };
-    is.split("-").forEach(function (e, i) {
+    is.split("-").forEach((e, i) => {
         switch (e[0]) {
             case "s":
-                cs(e.substring(1)).forEach(function (e2) { r += String.fromCharCode(Number(e2)); });
+                cs(e.substring(1)).forEach(e2 => { r += String.fromCharCode(Number(e2)); });
                 break;
             case "e":
                 r += String.fromCharCode(Number(e.substring(1)));
                 break;
             default:
-                var strs = cs(String(Number(e) - (i + i * 2)));
+                let strs = cs(String(Number(e) - (i + i * 2)));
                 r += String.fromCharCode(Number(strs[1])) + String.fromCharCode(Number(strs[0]));
         }
     });

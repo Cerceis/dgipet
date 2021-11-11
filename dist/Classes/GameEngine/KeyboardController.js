@@ -1,10 +1,10 @@
 import { Dialog } from "./Dialog.js";
-var KeyboardController = /** @class */ (function () {
-    function KeyboardController() {
+export class KeyboardController {
+    constructor() {
         this.init();
     }
-    KeyboardController.prototype.init = function () {
-        document.body.addEventListener("keydown", function (e) {
+    init() {
+        document.body.addEventListener("keydown", (e) => {
             switch (e.key) {
                 case "ArrowUp":
                     e.preventDefault();
@@ -24,7 +24,5 @@ var KeyboardController = /** @class */ (function () {
                     break;
             }
         });
-    };
-    return KeyboardController;
-}());
-export { KeyboardController };
+    }
+}

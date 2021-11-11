@@ -11,8 +11,8 @@ export class StartScreenScene{
 		this._startScene()
 	}
 	private async _startScene(): Promise<void>{
-		const startGameBtn = new ControlButton("Start", "width:100%;");
-		const loadGameBtn = new ControlButton("Load", "width:100%;");
+		const startGameBtn = new ControlButton("Start", "","width:100%;");
+		const loadGameBtn = new ControlButton("Load","", "width:100%;");
 		startGameBtn.bindFunc(()=>{
 			Screen.delete()
 			new UserCreationScene()

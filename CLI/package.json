@@ -1,0 +1,19 @@
+{
+  "name": "dgipet-cli",
+  "version": "1.0.0",
+  "description": "Dev tools Not to distribute.",
+  "main": "index.js",
+  "bin": {
+    "dgp": "bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Cerceis",
+  "license": "ISC",
+  "dependencies": {
+    "-": "^0.0.1",
+    "yargs": "^17.2.1"
+  }
+}

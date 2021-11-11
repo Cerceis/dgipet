@@ -1,11 +1,11 @@
-var ControlInput = /** @class */ (function () {
-    function ControlInput(label, min, max) {
+export class ControlInput {
+    constructor(label, min, max) {
         this._label = "";
         this._label = label;
         this.ele = document.createElement("div");
         this.ele.style.display = "grid";
         this.ele.style.margin = ".5em 0";
-        var text = document.createElement("span");
+        const text = document.createElement("span");
         text.textContent = this._label;
         this.ele.appendChild(text);
         this.ele_input = document.createElement("input");
@@ -15,16 +15,10 @@ var ControlInput = /** @class */ (function () {
         this.ele_input.setAttribute("style", "border-radius:.5em; padding:.5em; font-family:inherit;");
         this.ele.appendChild(this.ele_input);
     }
-    ControlInput.prototype.bindEvent = function (evt, func) {
+    bindEvent(evt, func) {
         this.ele_input.addEventListener(evt, func);
-    };
-    Object.defineProperty(ControlInput.prototype, "value", {
-        get: function () {
-            return this.ele_input.value;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return ControlInput;
-}());
-export { ControlInput };
+    }
+    get value() {
+        return this.ele_input.value;
+    }
+}

@@ -1,6 +1,6 @@
 import { GenerateObjectId } from "../../lib/GenerateObjectId.js";
-var ControllerClass = /** @class */ (function () {
-    function ControllerClass() {
+class ControllerClass {
+    constructor() {
         this.ele = document.createElement('div');
         this.listOfChildElement = [];
         this.ele.style.display = "grid";
@@ -8,37 +8,33 @@ var ControllerClass = /** @class */ (function () {
         this.ele.style.gridTemplateColumns = "1fr";
         this.ele.style.transition = "all .3s";
     }
-    ControllerClass.prototype.bind = function (parent) {
+    bind(parent) {
         parent.appendChild(this.ele);
-    };
-    ControllerClass.prototype.setColCount = function (colCount) {
-        this.ele.style.gridTemplateColumns = "repeat(" + colCount + ", 1fr)";
-    };
-    ControllerClass.prototype.add = function (childs, tags) {
-        var _this = this;
-        if (tags === void 0) { tags = []; }
-        childs.forEach(function (child) {
-            var childId = GenerateObjectId();
-            _this.listOfChildElement.push({
+    }
+    setColCount(colCount) {
+        this.ele.style.gridTemplateColumns = `repeat(${colCount}, 1fr)`;
+    }
+    add(childs, tags = []) {
+        childs.forEach(child => {
+            const childId = GenerateObjectId();
+            this.listOfChildElement.push({
                 id: childId,
                 tags: tags,
                 ele: child,
             });
-            _this.ele.appendChild(child);
+            this.ele.appendChild(child);
         });
-    };
-    ControllerClass.prototype.delete = function (tags) {
-        var _this = this;
-        if (tags === void 0) { tags = null; }
+    }
+    delete(tags = null) {
         if (Array.isArray(tags)) {
             if (tags.length > 0) {
-                this.listOfChildElement.forEach(function (child) {
-                    var targeted = false;
-                    tags.forEach(function (tag) {
-                        targeted = child.tags.some(function (childTag) { return childTag === tag; });
+                this.listOfChildElement.forEach(child => {
+                    let targeted = false;
+                    tags.forEach(tag => {
+                        targeted = child.tags.some(childTag => childTag === tag);
                     });
                     if (targeted) {
-                        _this.ele.removeChild(child.ele);
+                        this.ele.removeChild(child.ele);
                     }
                 });
             }
@@ -47,14 +43,12 @@ var ControllerClass = /** @class */ (function () {
             this.listOfChildElement = [];
             this.ele.innerHTML = "";
         }
-    };
-    ControllerClass.prototype.hide = function (hide) {
-        if (hide === void 0) { hide = true; }
+    }
+    hide(hide = true) {
         if (hide)
             this.ele.style.display = "none";
         else
             this.ele.style.display = "grid";
-    };
-    return ControllerClass;
-}());
-export var Controller = new ControllerClass();
+    }
+}
+export const Controller = new ControllerClass();

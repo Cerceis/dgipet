@@ -5,9 +5,9 @@ function replacer(key, value) {
     else
         return value;
 }
-export var SaveGame = function (u) {
-    var ele = document.createElement("a");
-    var filename = u.name ? u.name + ".dgipet" : "unknown.dgipet";
+export const SaveGame = (u) => {
+    const ele = document.createElement("a");
+    const filename = u.name ? `${u.name}.dgipet` : `unknown.dgipet`;
     ele.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(GCK(JSON.stringify(u, replacer))));
     ele.setAttribute("download", filename);
     ele.style.display = "none";

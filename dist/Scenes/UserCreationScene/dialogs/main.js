@@ -1,25 +1,14 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 import { V003 } from "./V003.js";
 /*
     [#: Text-Decorator,
     [@: Function-invoker
 */
-export default __assign({ "D001": [
+export default Object.assign({ "D001": [
         "Welcome to DGIPET!",
         "You are now in the DGI world!",
         "It's not D-G-I world!",
         "It's pronounced D-G world!",
-        "Please tell me Your name!",
+        "Please tell me your name!",
     ], "D002": [
         "So your name is [#playerName ?!",
         "That's definately a weird name...",

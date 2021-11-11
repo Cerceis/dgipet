@@ -10,6 +10,9 @@ import { User } from "../../Classes/GameEngine/User.js";
 import { gsap } from "../../../exlib/GSAP/index.js";
 import { Character } from "../../Types/Characters.js";
 import { HomeScene } from "../HomeScene/HomeScene.js";
+import { RawMeat } from "../../Classes/GameObjects/Items/RawMeat.js"
+import { Steak } from "../../Classes/GameObjects/Items/Steak.js"
+import { Snackbar } from "../../Classes/VisualControls/SnackBar.js"
 
 import dlg from "./dialogs/main.js"
 
@@ -37,7 +40,7 @@ export class UserCreationScene{
 		await this._part1();
 		new Sound("reward.wav");
 		const selectedPartner: Character = await this._part2();
-		User.partners.push(selectedPartner)
+		User.partner = selectedPartner
 		this.candidatesClass.forEach(candidate => {
 			if(candidate.name !== selectedPartner.name){
 				gsap.to(candidate.ele, { opacity: 0 , duration: .5 });
@@ -142,6 +145,19 @@ export class UserCreationScene{
 					type: "text",
 					value: partnerName
 				},
+				{
+					tag: "addItems",
+					type: "function",
+					value(){
+						User.inventory.addItems([
+							new RawMeat(), new RawMeat(), new RawMeat(),
+							new Steak() 
+						])
+						Snackbar.add("Item added", "<g-icon name='rawMeat'></g-icon> Raw Meat x 3", 5000)
+						Snackbar.add("Item added", "<g-icon name='steak'></g-icon> Steak x 1", 5000)
+					}
+					
+				}
 			])
 			Dialog.setDialog(dlg.D003)
 			await Dialog.untilEnd()

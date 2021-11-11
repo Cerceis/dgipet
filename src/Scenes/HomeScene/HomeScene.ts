@@ -11,7 +11,7 @@ export class HomeScene{
 		this._startScene()
 	}
 	private async _startScene(): Promise<void>{
-		const userPartner = User.partners[0]
+		const userPartner = User.partner
 		console.log(userPartner)
 		Animator.start();
 		Screen.draw(userPartner.ele, 50, 50)
