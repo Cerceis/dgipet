@@ -18,7 +18,7 @@ export class HomeScene{
 		
 		const menu = [
 			{
-				controls: new ControlButton("<i class='i-save'></i> Save"),
+				controls: new ControlButton("<i class='i-save'></i> Save (Not working yet)"),
 				func(){ SaveGame(User) } 
 			},
 			{
