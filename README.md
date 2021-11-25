@@ -8,8 +8,8 @@ For more info visit https://pet.cerceis.net/views/info.html
 
 # Version
 
-+[2021-10-25]: v0.1a 
-+[2021-11-24]: v0.11a 
+- +[2021-10-25]: v0.1a 
+- +[2021-11-24]: v0.11a 
 
 # Screen
 ```                                                 
