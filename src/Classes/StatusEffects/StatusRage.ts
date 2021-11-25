@@ -34,4 +34,5 @@ export class StatusRage{
 	public deactivate(): void{
 		AttributeOperator.set(this.char)._(["phyDmg"], `-${this._cache}`)
 	}
+	
 }

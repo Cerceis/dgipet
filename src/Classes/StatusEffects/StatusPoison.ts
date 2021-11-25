@@ -15,7 +15,7 @@ export class StatusPoison{
 	public label: string = "Poison" //This is that the tooltips display as
 	public icon: string = `<g-icon name="skillPoison"></g-icon>`
 	public description: string = `
-		Take damage periodically.
+		Take damage periodically. (-5% of current hp)
 	`
 	public char: Character;
 

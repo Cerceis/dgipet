@@ -17,7 +17,10 @@ export class Basic {
         this.emotes = {
             "idle": ["000", "001"],
             "angry": ["008", "011"],
-            "happy": ["003", "007"],
+            "happy": ["000", "007"],
+            "asleep": ["004", "005"],
+            "eat": ["002", "003"],
+            "weak": ["009", "010"],
         };
         this.experience = 0;
         this.levelInfo = LevelParser(this.experience);

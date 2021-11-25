@@ -25,6 +25,7 @@ export class PoisonFang {
         this.turnUntilExp = 16;
         this.description = `
 		Bite enemy with poisonous fang, dealing physical damage with a chance to poison enemy.
+		(Poison deal % damage to target's current hp, not max hp, this means poison deal lower damage when hp is low)
 	`;
         this.char = char;
     }

@@ -21,7 +21,7 @@ export class StartScreenScene {
     _startScene() {
         return __awaiter(this, void 0, void 0, function* () {
             const startGameBtn = new ControlButton("Start", "", "width:100%;");
-            const loadGameBtn = new ControlButton("Load", "", "width:100%;");
+            const loadGameBtn = new ControlButton("Load(Not working yet)", "", "width:100%;");
             startGameBtn.bindFunc(() => {
                 Screen.delete();
                 new UserCreationScene();

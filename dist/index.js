@@ -70,10 +70,7 @@ battleBtn.onclick = () => __awaiter(void 0, void 0, void 0, function* () {
     const btl = new Battle(c1, c2);
     yield btl.start();
 });
-const playBtn = document.createElement("button");
-playBtn.textContent = "Start Animation";
 debugPanel.appendChild(testBtn);
 debugPanel.appendChild(testBtn2);
 debugPanel.appendChild(inventoryBtn);
 debugPanel.appendChild(battleBtn);
-debugPanel.appendChild(playBtn);

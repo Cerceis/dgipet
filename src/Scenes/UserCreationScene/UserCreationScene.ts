@@ -149,6 +149,7 @@ export class UserCreationScene{
 					tag: "addItems",
 					type: "function",
 					value(){
+						new Sound("reward.wav");
 						User.inventory.addItems([
 							new RawMeat(), new RawMeat(), new RawMeat(),
 							new Steak() 

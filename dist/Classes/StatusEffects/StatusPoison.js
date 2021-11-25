@@ -13,7 +13,7 @@ export class StatusPoison {
         this.label = "Poison"; //This is that the tooltips display as
         this.icon = `<g-icon name="skillPoison"></g-icon>`;
         this.description = `
-		Take damage periodically.
+		Take damage periodically. (-5% of current hp)
 	`;
         this.char = char;
     }

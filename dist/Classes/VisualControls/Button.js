@@ -5,12 +5,16 @@ export class ControlButton {
 				display:flex;
 				justify-content:center;
 				align-items:center;
-				border-radius:.5em; 
-				padding:.5em; 
+				outline: 0;
+				border: 0;
+				border-radius: 0.25rem;
+				padding: 0.5rem 1rem;
 				font-family:inherit; 
 				font-size:100%; 
 				width:100%;
 				max-width:300px;
+				background: var(--primary);
+				color:white;
 			` + style);
         if (icon) {
             const iconEle = document.createElement("span");

@@ -3,7 +3,7 @@ export class ControlContainer{
 	constructor(childs: HTMLElement[] = [], style: string = ""){
 		this.ele.setAttribute(
 			"style",
-			"display:grid;"+style,
+			"display:grid; gap:.5em;"+style,
 		);
 		childs.forEach(child => {
 			this.ele.appendChild(child)

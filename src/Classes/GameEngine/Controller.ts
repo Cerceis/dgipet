@@ -13,6 +13,7 @@ class ControllerClass{
 
 	constructor(){
 		this.ele.style.display = "grid";
+		this.ele.style.gap = ".5em";
 		this.ele.style.justifyItems = "center";
 		this.ele.style.gridTemplateColumns = "1fr";
 		this.ele.style.transition = "all .3s";
